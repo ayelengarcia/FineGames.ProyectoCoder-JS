@@ -1,0 +1,58 @@
+main {
+  background-image: url(../ASSETS/fondo-main2.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  .gif {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .carousel {
+    border-radius: 5px;
+    font-size: 0.8em;
+    .carousel-inner {
+      .carousel-item {
+        .carousel-caption {
+          bottom: 0%;
+          right: 0%;
+          left: 0%;
+          text-align: start;
+          background: map-get($color, "gradient-texto");
+          h5 {
+            font-size: 1.1em;
+          }
+          .btn {
+            @include btn;
+          }
+        }
+      }
+    }
+  }
+  .juegos {
+    background: map-get($color, "gradient-gray");
+    border-radius: 15px;
+    h1,
+    h2 {
+      font-size: 30px;
+    }
+    div {
+      .card {
+        background: none;
+        border: none;
+        .card-body {
+          p {
+            color: map-get($color, "gray");
+            font-size: 14px;
+          }
+          .btn {
+            @include btn;
+            width: auto;
+          }
+        }
+      }
+    }
+  }
+}

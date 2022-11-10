@@ -1,0 +1,270 @@
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: black;
+  color: white;
+}
+
+header .navbar {
+  background: rgba(37, 36, 36, 0.884);
+}
+header .navbar .btn-nav:hover {
+  border: 1px solid #bc0b37;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+header .navbar .btn-nav:enabled {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+header .navbar .search:hover > .bi-search,
+header .navbar .search .form-control:focus + .bi-search {
+  color: #bc0b37;
+  cursor: pointer;
+}
+header .navbar .search .form-control {
+  text-indent: 18px;
+  width: 120px;
+  height: 30px;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 5px;
+  background-color: #4d4b4b;
+}
+header .navbar .search .form-control:hover, header .navbar .search .form-control:focus {
+  -webkit-transition: 2s;
+  transition: 2s;
+  width: 165px;
+  max-width: 200px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.404);
+  background-color: rgba(37, 36, 36, 0.884);
+}
+header .navbar .search .bi-search {
+  margin: -26px 0 0 8px;
+}
+header .navbar #navbarSupportedContent ul .nav-item .nav-link {
+  color: white;
+}
+header .navbar #navbarSupportedContent ul .nav-item .nav-link:hover {
+  color: #999999;
+}
+header .navbar #navbarSupportedContent .btn-user {
+  width: auto;
+}
+header .navbar #navbarSupportedContent .btn-user .btn-login {
+  height: 33px;
+  width: 35px;
+  border-radius: 5px;
+  background-color: #bc0b37;
+}
+header .navbar #navbarSupportedContent .btn-user .btn-login svg {
+  color: black;
+}
+header .navbar #navbarSupportedContent .btn-user:hover .btn-login {
+  background-color: black;
+  border: 2px solid #bc0b37;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+header .navbar #navbarSupportedContent .btn-user:hover .btn-login svg {
+  color: #bc0b37;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+header .navbar #navbarSupportedContent .btn-user:hover .bi-caret-down-fill {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+header .navbar #navbarSupportedContent .btn-user:hover .desplegable-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+header .navbar #navbarSupportedContent .btn-user .desplegable-login {
+  display: none;
+  width: 120px;
+  height: auto;
+  right: -2px;
+  top: 20px;
+}
+header .navbar #navbarSupportedContent .btn-user .desplegable-login ul {
+  background-color: rgba(37, 36, 36, 0.884);
+}
+header .navbar #navbarSupportedContent .btn-user .desplegable-login ul li {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+}
+header .navbar #navbarSupportedContent .btn-user .desplegable-login ul li:hover {
+  color: #999999;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+header .subnav {
+  background-color: rgba(0, 0, 0, 0.884);
+}
+header .subnav .breadcrumb .border {
+  border: none !important;
+  color: #999999;
+  border-bottom: 1px solid #bc0b37 !important;
+}
+header .subnav .breadcrumb a:hover {
+  color: #999999;
+}
+header .subnav .bi-bag-fill:hover {
+  color: #bc0b37;
+}
+header .subnav .btn-user .btn-login {
+  height: 33px;
+  width: 35px;
+  border-radius: 5px;
+  background-color: #bc0b37;
+}
+header .subnav .btn-user .btn-login svg {
+  color: black;
+}
+header .subnav .btn-user:hover .btn-login {
+  background-color: black;
+  border: 2px solid #bc0b37;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+header .subnav .btn-user:hover .btn-login svg {
+  color: #bc0b37;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+header .subnav .btn-user:hover .bi-caret-down-fill {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+header .subnav .btn-user:hover .desplegable-login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+header .subnav .btn-user .desplegable-login {
+  display: none;
+  width: 120px;
+  height: auto;
+  right: -2px;
+  top: 20px;
+}
+header .subnav .btn-user .desplegable-login ul {
+  background-color: rgba(37, 36, 36, 0.884);
+}
+header .subnav .btn-user .desplegable-login ul li {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+}
+header .subnav .btn-user .desplegable-login ul li:hover {
+  color: #999999;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+header .subnav li,
+header .subnav a {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+}
+header .subnav li:hover,
+header .subnav a:hover {
+  color: #999999;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+main {
+  background-image: url(../ASSETS/fondo-main2.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+main .gif img {
+  max-width: 100%;
+}
+main .carousel {
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+main .carousel .carousel-inner .carousel-item .carousel-caption {
+  bottom: 0%;
+  right: 0%;
+  left: 0%;
+  text-align: start;
+  background: linear-gradient(3.05deg, #000000 -17.92%, rgba(169, 145, 214, 0) 81.23%);
+}
+main .carousel .carousel-inner .carousel-item .carousel-caption h5 {
+  font-size: 1.1em;
+}
+main .carousel .carousel-inner .carousel-item .carousel-caption .btn {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #ffffff;
+  width: 140px;
+  height: 40px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(-35.71%, #cecece), color-stop(128.57%, rgba(255, 255, 255, 0.404)));
+  background: linear-gradient(180deg, #cecece -35.71%, rgba(255, 255, 255, 0.404) 128.57%);
+}
+main .juegos {
+  background: rgba(37, 36, 36, 0.884);
+  border-radius: 15px;
+}
+main .juegos h1,
+main .juegos h2 {
+  font-size: 30px;
+}
+main .juegos div .card {
+  background: none;
+  border: none;
+}
+main .juegos div .card .card-body p {
+  color: #999999;
+  font-size: 14px;
+}
+main .juegos div .card .card-body .btn {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #ffffff;
+  width: 140px;
+  height: 40px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(-35.71%, #cecece), color-stop(128.57%, rgba(255, 255, 255, 0.404)));
+  background: linear-gradient(180deg, #cecece -35.71%, rgba(255, 255, 255, 0.404) 128.57%);
+  width: auto;
+}
+
+@media (min-width: 576px) {
+  body header .navbar .search .form-control:hover, body header .navbar .search .form-control:focus {
+    width: 200px;
+  }
+  body main .carousel {
+    font-size: 0.9em;
+  }
+  body main .carousel .carousel-inner .carousel-item .carousel-caption h5 {
+    font-size: 1.5em;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.884);
+}
+
+::-webkit-scrollbar-thumb {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(-35.71%, #cecece), color-stop(128.57%, rgba(255, 255, 255, 0.404)));
+  background: linear-gradient(180deg, #cecece -35.71%, rgba(255, 255, 255, 0.404) 128.57%);
+  border-radius: 10px;
+}

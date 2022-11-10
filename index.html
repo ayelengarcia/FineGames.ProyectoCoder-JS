@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Fine Games Store 𝄀 Descarga y disfruta los mejores juegos para PC y
+    Consolas
+  </title>
+  <link rel="shortcut icon" href="./assets/Favicon.webp" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet" />
+  <!-- boostrap libreria -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+  <!-- Ruta css -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <!-- Ruta boostrap -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+  </script>
+  <!-- SCRIPTS -->
+  <script src="./js/templates.js"></script>
+  <script src="./js/juegos.js"></script>
+  <script defer src="./js/index.js"></script>
+</head>
+
+<body>
+  <header id="header" class="fixed-top">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar navbar-dark py-1">
+      <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand" href="#"><img class="logo" src="./ASSETS/Fine-gameswhite.webp" alt="Logo" /></a>
+        <!-- Buscador -->
+        <form class="search ms-2" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search" />
+          <i class="bi bi-search position-absolute"></i>
+        </form>
+        <!-- Btn-nav -->
+        <button class="btn-nav navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link d-flex justify-content-center" aria-current="page" href="#">INICIO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link d-flex justify-content-center" href="#">TIENDA</a>
+            </li>
+          </ul>
+          <!-- Btn login1 -->
+          <div class="btn-user d-none d-lg-flex align-items-center justify-content-center">
+            <div id="btn-login" class="btn-login d-flex justify-content-center align-items-center ms-2 me-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                class="bi bi-person-fill" viewBox="0 0 16 16">
+                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+              </svg>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+              <path
+                d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+            </svg>
+            <div class="desplegable-login position-absolute p-0 mt-4">
+              <ul class="p-0 m-0 d-flex justify-content-end flex-column align-items-end mt-5">
+                <li class="p-2 px-3">Log in</li>
+                <li class="p-2 px-3 pb-0">Log out</li>
+                <hr class="w-100" />
+                <li class="p-2 px-3 pt-0 sing-up">Sing up</li>
+                <li class="p-2 px-3">My account</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- SUBNAV -->
+    <nav class="row container-fluid pt-1 pb-1 ms-0 px-1 px-sm-3 subnav" style="--bs-breadcrumb-divider: ''"
+      aria-label="breadcrumb">
+      <!-- submenu -->
+      <ol class="col-9 col-md-10 breadcrumb m-0 d-flex align-items-center">
+        <li class="breadcrumb-item">
+          <a id="link" class="border" href="./index.html">Descubrir</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a id="link2" href="./index.html#store-oferta">Explorar</a>
+        </li>
+      </ol>
+      <!-- Carrito -->
+      <span class="col-1 col-lg-2 d-flex justify-content-end align-items-center"><a href="#"><i id="carrito"
+            class="bi bi-bag-fill"></i></a></span>
+      <!-- btn-login-2 -->
+      <div class="col-2 col-md-1 btn-user d-lg-none d-flex align-items-center justify-content-center p-0">
+        <div class="btn-login d-flex justify-content-center align-items-center ms-2 me-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill"
+            viewBox="0 0 16 16">
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+          </svg>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill"
+          viewBox="0 0 16 16">
+          <path
+            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+        </svg>
+        <div class="desplegable-login position-absolute p-0 pt-1 mt-4">
+          <ul class="p-0 m-0 d-flex justify-content-end flex-column align-items-end mt-5">
+            <li class="p-2 px-3">Log in</li>
+            <li class="p-2 px-3 pb-0">Log out</li>
+            <hr class="w-100" />
+            <li class="p-2 px-3 pt-0 sing-up">Sing up</li>
+            <li class="p-2 px-3">My account</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="row container-fluid mt-5 mx-0 py-5 px-1 px-md-5">
+    <!-- GIF -->
+    <div class="col-lg-4 gif d-none d-lg-flex justify-content-center align-items-center">
+      <img src="ASSETS/glitch.webp" alt="Personaje Focus" />
+    </div>
+
+    <!-- CAROUSEL -->
+    <div id="carouselExampleCaptions" class="col-lg-8 carousel slide m-0 p-0" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="7000">
+          <img src="ASSETS/world-war.webp" class="d-block w-100 carousel" alt="World War Z" />
+          <div class="carousel-caption d-flex flex-column align-items-start px-4 py-0">
+            <img src="ASSETS/LogoWorldWar.webp" alt="Logo World War" class="w-25 pb-1 pb-sm-4" />
+            <h5>YA DISPONIBLE</h5>
+            <p class="d-none d-sm-flex w-50">
+              Cambia el curso del apocalipsis zombi en consolas y en PC con
+              cross-play completo. Únete con amigos o en solitario...
+            </p>
+            <p class="mb-0">Desde USD 9.99</p>
+            <div class="btn d-flex justify-content-center align-items-center mb-3">
+              COMPRAR YA
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="6000">
+          <img src="ASSETS/sins-solar-empire-2.webp" class="d-block w-100 carousel" alt="World War Z" />
+          <div class="carousel-caption d-flex flex-column align-items-start px-4 py-0">
+            <img src="ASSETS/sins2_logo_hero.webp" alt="Logo World War" class="w-25 pb-1 pb-sm-4" />
+            <h5>ACCESO ANTICIPADO</h5>
+            <p class="d-none d-sm-flex w-50">
+              El acceso anticipado de Sins Of a Solar Empire II comienza con
+              una prueba técnica jugable.
+            </p>
+            <p class="mb-0">Desde USD 8.49</p>
+            <div class="btn d-flex justify-content-center align-items-center mb-3">
+              PRECOMPRAR YA
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="6000">
+          <img src="ASSETS/egs-genshin-impact-3-2.webp" class="d-block w-100 carousel" alt="World War Z" />
+          <div class="carousel-caption d-flex flex-column align-items-start px-4 py-0">
+            <img src="ASSETS/geshinlogo.webp" alt="Logo World War" class="w-25 pb-1 pb-sm-4" />
+            <h5>LA VERSIÓN 3.2 YA DISPONIBLE</h5>
+            <p class="d-none d-sm-flex w-50">
+              La actualización más reciente te traerá la gran final de la
+              misión de Arconte de Sumeru, y prensentará a Nahida y Layla como
+              personajes jugables.
+            </p>
+            <p class="mb-0">Gratis</p>
+            <div class="btn d-flex justify-content-center align-items-center mb-3">
+              COMPRAR YA
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-indicators m-0">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+    </div>
+
+    <!-- buttons -->
+
+    <div class="juegos p-1 mt-4">
+      <section class="container-fluid d-flex justify-content-evenly p-4">
+        <button class="btn btn-danger" onclick="buscarJuegos()">
+          BUSCAR
+        </button>
+        <button class="btn btn-danger" onclick="filtrarJuegos()">
+          FILTRAR
+        </button>
+        <button class="btn btn-danger" onclick="ordenarJuegos()">
+          ORDENAR
+        </button>
+        <button class="btn btn-danger" onclick="quitarJuegos()">
+          QUITAR
+        </button>
+      </section>
+    </div>
+
+    <!-- STORE -->
+    <div id="store-oferta" class="col-12 juegos p-5 pt-4 my-4">
+      <h1 class="col-12 pb-4">Todos los juegos</h1>
+      <div class="contenedor-juegos container-fluid row d-flex flex-wrap justify-content-around gap-3 m-0 p-0"></div>
+    </div>
+
+    <!-- <div id="store-oferta" class="col-12 juegos p-5 pt-4 my-4">
+      <h1 class="col-12 pb-4">Juegos en oferta</h1>
+      <div class="container-fluid row d-flex flex-wrap justify-content-around gap-3 m-0 p-0"></div>
+    </div>
+
+    <div id="store-gratuitos" class="col-12 juegos p-5 pt-4 my-4">
+      <h2 class="col-12 pb-4">Juegos gratuitos</h2>
+      <div class="container-fluid row d-flex flex-wrap justify-content-around gap-3 m-0 p-0"></div>
+    </div>
+
+    <div id="store-populares" class="col-12 juegos p-5 pt-4 my-4">
+      <h2 class="col-12 pb-4">Juegos populares</h2>
+      <div class="container-fluid row d-flex flex-wrap justify-content-around gap-3 m-0 p-0"></div>
+    </div>
+  </main> -->
+
+</body>
+
+</html>

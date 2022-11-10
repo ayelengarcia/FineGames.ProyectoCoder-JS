@@ -1,0 +1,68 @@
+header {
+  .navbar {
+    background: map-get($color, "gradient-gray");
+
+    .btn-nav {
+      @include btn-nav;
+    }
+
+    .search {
+      @include hover-lupa;
+
+      .form-control {
+        @include search-input;
+      }
+      .bi-search {
+        margin: -26px 0 0 8px;
+      }
+    }
+
+    #navbarSupportedContent {
+      ul {
+        .nav-item {
+          .nav-link {
+            color: white;
+            &:hover {
+              color: map-get($color, "gray");
+            }
+          }
+        }
+      }
+      .btn-user {
+        width: auto;
+        @include btn-login;
+        @include desplegable-login;
+      }
+    }
+  }
+  .subnav {
+    background-color: map-get($color, "gradient-black");
+
+    .breadcrumb {
+      .border {
+        border: none !important;
+        color: map-get($color, "gray");
+        border-bottom: 1px solid map-get($color, "primary") !important;
+      }
+      a:hover {
+        color: map-get($color, "gray");
+      }
+    }
+
+    .bi-bag-fill {
+      &:hover {
+        color: map-get($color, "primary");
+      }
+    }
+
+    .btn-user {
+      @include btn-login;
+      @include desplegable-login;
+    }
+
+    li,
+    a {
+      @include enlaces;
+    }
+  }
+}

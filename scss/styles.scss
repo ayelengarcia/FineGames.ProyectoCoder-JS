@@ -1,0 +1,9 @@
+@import "./variables";
+@import "./mixins";
+@include body;
+@import "./header";
+@import "./main";
+@import "./footer";
+@import "./mediaQ";
+@include scroll;
+

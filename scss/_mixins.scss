@@ -1,0 +1,123 @@
+@mixin body {
+  body {
+    font-family: "Nunito", sans-serif;
+    background-color: black;
+    color: white;
+  }
+}
+
+@mixin scroll {
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: map-get($color, "gradient-black");
+  }
+  ::-webkit-scrollbar-thumb {
+    background: map-get($color, "gradient-glass");
+    border-radius: 10px;
+  }
+}
+
+@mixin enlaces {
+  color: white;
+  text-decoration: none;
+  list-style: none;
+  &:hover {
+    color: map-get($color, "gray");
+    transition: 0.5s;
+    cursor: pointer;
+  }
+}
+
+@mixin btn-nav {
+  &:hover {
+    border: 1px solid map-get($color, "primary");
+    transition: 0.5s;
+  }
+  &:enabled {
+    box-shadow: none;
+  }
+}
+
+@mixin btn-login {
+  .btn-login {
+    height: 33px;
+    width: 35px;
+    border-radius: 5px;
+    background-color: map-get($color, "primary");
+    svg {
+      color: black;
+    }
+  }
+  &:hover {
+    .btn-login {
+      background-color: black;
+      border: 2px solid map-get($color, "primary");
+      transition: 0.5s;
+      svg {
+        color: map-get($color, "primary");
+        transition: 0.5s;
+      }
+    }
+    .bi-caret-down-fill {
+      transform: rotate(180deg);
+      transition: 0.5s;
+    }
+    .desplegable-login {
+      display: flex;
+    }
+  }
+}
+
+@mixin btn {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #ffffff;
+  width: 140px;
+  height: 40px;
+  background: map-get($color, "gradient-glass");
+}
+
+@mixin desplegable-login {
+  .desplegable-login {
+    display: none;
+    width: 120px;
+    height: auto;
+    right: -2px;
+    top: 20px;
+    ul {
+      background-color: map-get($color, "gradient-gray");
+      li {
+        @include enlaces;
+      }
+    }
+  }
+}
+
+@mixin hover-lupa {
+  &:hover > .bi-search,
+  .form-control:focus + .bi-search {
+    color: map-get($color, "primary");
+    cursor: pointer;
+  }
+}
+
+@mixin search-input {
+  text-indent: 18px;
+  width: 120px;
+  height: 30px;
+  border: none;
+  box-shadow: none;
+  border-radius: 5px;
+  background-color: map-get($color, "secundary");
+  &:hover,
+  &:focus {
+    transition: 2s;
+    width: 165px;
+    max-width: 200px;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.404);
+    background-color: map-get($color, "gradient-gray");
+  }
+}
