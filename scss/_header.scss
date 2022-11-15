@@ -39,19 +39,27 @@ header {
     background-color: map-get($color, "gradient-black");
 
     .breadcrumb {
-      .border {
-        border: none !important;
-        color: map-get($color, "gray");
-        border-bottom: 1px solid map-get($color, "primary") !important;
-      }
-      a:hover {
-        color: map-get($color, "gray");
+      .breadcrumb-item {
+        a {
+          color: map-get($color, "gray");
+          &:hover {
+            color: white;
+          }
+        }
+        .active {
+          color: white;
+          border-bottom: 1px solid map-get($color, "primary");
+        }
       }
     }
 
-    .bi-bag-fill {
-      &:hover {
-        color: map-get($color, "primary");
+    button {
+      color: white;
+      background-color: map-get($color, "gradient-black");
+      .bi-bag-fill {
+        &:hover {
+          color: map-get($color, "primary");
+        }
       }
     }
 

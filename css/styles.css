@@ -107,15 +107,21 @@ header .navbar #navbarSupportedContent .btn-user .desplegable-login ul li:hover 
 header .subnav {
   background-color: rgba(0, 0, 0, 0.884);
 }
-header .subnav .breadcrumb .border {
-  border: none !important;
-  color: #999999;
-  border-bottom: 1px solid #bc0b37 !important;
-}
-header .subnav .breadcrumb a:hover {
+header .subnav .breadcrumb .breadcrumb-item a {
   color: #999999;
 }
-header .subnav .bi-bag-fill:hover {
+header .subnav .breadcrumb .breadcrumb-item a:hover {
+  color: white;
+}
+header .subnav .breadcrumb .breadcrumb-item .active {
+  color: white;
+  border-bottom: 1px solid #bc0b37;
+}
+header .subnav button {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.884);
+}
+header .subnav button .bi-bag-fill:hover {
   color: #bc0b37;
 }
 header .subnav .btn-user .btn-login {
@@ -241,6 +247,13 @@ main .juegos div .card .card-body .btn {
   background: -webkit-gradient(linear, left top, left bottom, color-stop(-35.71%, #cecece), color-stop(128.57%, rgba(255, 255, 255, 0.404)));
   background: linear-gradient(180deg, #cecece -35.71%, rgba(255, 255, 255, 0.404) 128.57%);
   width: auto;
+}
+main .modal .modal-dialog {
+  background-color: black;
+}
+main .modal .modal-dialog .modal-content {
+  border: 1px solid white;
+  background-color: black;
 }
 
 @media (min-width: 576px) {

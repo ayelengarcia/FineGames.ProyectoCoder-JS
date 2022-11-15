@@ -1,13 +1,11 @@
 let ubicacionPrincipal = window.pageYOffset; //ocultarHeader
-
-let link = document.getElementById("link"); //borderSelected submenu
-let link2 = document.getElementById("link2"); //borderSelected submenu
-contador = 0; //borderSelected submenu
-
+let items = document.querySelectorAll("ol li a"); //borderSelected submenu
 let carrito = document.getElementById("carrito"); //selected carrito
-contador = 0; //selected carrito
-
+let contador = 0; //selected carrito
 const contenedorJuegos = document.querySelector(".contenedor-juegos"); // RECORRER JUEGOS
+const contenedorCarousel = document.querySelector(".carousel-inner"); // RECORRER CAROUSEL
+const verMas = document.getElementById("verMas"); //btnVer más
+const IVA = 1.21;
 
 //ocultarHeader
 window.onscroll = function ocultarHeader() {
@@ -24,25 +22,11 @@ window.onscroll = function ocultarHeader() {
 };
 
 //borderSelected submenu
-link.addEventListener("click", () => {
-  if (contador == 1) {
-    link2.classList.remove("border");
-    contador = 0;
-  } else {
-    link.classList.add("border");
-    contador = 1;
-  }
-});
-
-link2.addEventListener("click", () => {
-  if (contador == 0) {
-    link.classList.remove("border");
-    link2.classList.add("border");
-    contador = 1;
-  } else {
-    link2.classList.add("border");
-    contador = 0;
-  }
+items.forEach((item) => {
+  item.addEventListener("click", () => {
+    document.querySelector("li .active").classList.remove("active");
+    item.classList.add("active");
+  });
 });
 
 //selected carrito
@@ -58,6 +42,18 @@ carrito.addEventListener("click", () => {
 
 // ----------------------- FUNCTIONS STORE-------------------------------//
 
+// RECORRER CAROUSEL
+function recorrerCarousel(array) {
+  let contenido = "";
+  if (array.length > 0) {
+    array.forEach((carousel) => {
+      contenido += retornCarousel(carousel);
+    });
+    contenedorCarousel.innerHTML = contenido;
+  }
+}
+recorrerCarousel(CAROUSEL);
+
 // RECORRER JUEGOS
 function allGamesHTML(array) {
   let contenido = "";
@@ -69,6 +65,12 @@ function allGamesHTML(array) {
   }
 }
 allGamesHTML(JUEGOS);
+
+//PrecioPublico (sin iva)
+function mostrarCalculo(precio, descuento) {
+  const calculo = new ValorJuego(precio, descuento);
+  return calculo.precioDescuento();
+}
 
 //FIND
 function buscarJuegos() {
@@ -82,7 +84,7 @@ function buscarJuegos() {
   } else {
     alert("⛔ No se encontro el Juego!");
   }
-};
+}
 
 //SORT
 function ordenarJuegos() {

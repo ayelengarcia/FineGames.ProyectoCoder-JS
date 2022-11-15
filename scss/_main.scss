@@ -55,4 +55,13 @@ main {
       }
     }
   }
+  .modal {
+    .modal-dialog {
+      background-color: black;
+      .modal-content {
+        border: 1px solid white;
+        background-color: black;
+      }
+    }
+  }
 }
