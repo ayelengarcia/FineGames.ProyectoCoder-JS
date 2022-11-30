@@ -26,11 +26,25 @@ main {
           }
           .btn {
             @include btn;
+            a {
+              color: white;
+              text-decoration: none;
+            }
           }
         }
       }
     }
   }
+  #carouselExampleControls,
+  #carouselExampleControls-2,
+  #carouselExampleControls-3 {
+    .carousel-control-prev,
+    .carousel-control-next {
+      background-color: map-get($color, "gradient-black");
+      width: 30px;
+    }
+  }
+
   .juegos {
     background: map-get($color, "gradient-gray");
     border-radius: 15px;
@@ -40,6 +54,7 @@ main {
     }
     div {
       .card {
+        width: 12rem;
         background: none;
         border: none;
         .card-body {
@@ -47,21 +62,28 @@ main {
             color: map-get($color, "gray");
             font-size: 14px;
           }
-          .btn {
+          .btn-add {
             @include btn;
-            width: auto;
+            width: 100px;
           }
         }
       }
     }
   }
-  .modal {
-    .modal-dialog {
-      background-color: black;
-      .modal-content {
-        border: 1px solid white;
-        background-color: black;
-      }
+  .miModal {
+    top: 14vh;
+    height: 80vh;
+    width: auto;
+    z-index: 100;
+    background: map-get($color, "gradient-black");
+    border: 1px solid map-get($color, "gray");
+    border-radius: 12px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .headerModal {
+      border-bottom: 1px solid map-get($color, "gray");
     }
   }
 }

@@ -73,10 +73,16 @@
 @mixin btn {
   font-size: 0.9em;
   font-weight: 500;
-  color: #ffffff;
+  color: white;
   width: 140px;
   height: 40px;
+  border: none;
+  border-radius: 3px;
   background: map-get($color, "gradient-glass");
+  &:hover{
+    transition: 0.5s;
+    background-color: map-get($color, "gray");
+  }
 }
 
 @mixin desplegable-login {

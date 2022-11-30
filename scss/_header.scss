@@ -28,6 +28,10 @@ header {
           }
         }
       }
+      .nav-link.active,
+      .show > .nav-link {
+        background-color: map-get($color, "primary");
+      }
       .btn-user {
         width: auto;
         @include btn-login;

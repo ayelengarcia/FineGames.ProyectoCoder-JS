@@ -49,6 +49,10 @@ header .navbar #navbarSupportedContent ul .nav-item .nav-link {
 header .navbar #navbarSupportedContent ul .nav-item .nav-link:hover {
   color: #999999;
 }
+header .navbar #navbarSupportedContent .nav-link.active,
+header .navbar #navbarSupportedContent .show > .nav-link {
+  background-color: #bc0b37;
+}
 header .navbar #navbarSupportedContent .btn-user {
   width: auto;
 }
@@ -216,11 +220,31 @@ main .carousel .carousel-inner .carousel-item .carousel-caption h5 {
 main .carousel .carousel-inner .carousel-item .carousel-caption .btn {
   font-size: 0.9em;
   font-weight: 500;
-  color: #ffffff;
+  color: white;
   width: 140px;
   height: 40px;
+  border: none;
+  border-radius: 3px;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(-35.71%, #cecece), color-stop(128.57%, rgba(255, 255, 255, 0.404)));
   background: linear-gradient(180deg, #cecece -35.71%, rgba(255, 255, 255, 0.404) 128.57%);
+}
+main .carousel .carousel-inner .carousel-item .carousel-caption .btn:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #999999;
+}
+main .carousel .carousel-inner .carousel-item .carousel-caption .btn a {
+  color: white;
+  text-decoration: none;
+}
+main #carouselExampleControls .carousel-control-prev,
+main #carouselExampleControls .carousel-control-next,
+main #carouselExampleControls-2 .carousel-control-prev,
+main #carouselExampleControls-2 .carousel-control-next,
+main #carouselExampleControls-3 .carousel-control-prev,
+main #carouselExampleControls-3 .carousel-control-next {
+  background-color: rgba(0, 0, 0, 0.884);
+  width: 30px;
 }
 main .juegos {
   background: rgba(37, 36, 36, 0.884);
@@ -231,6 +255,7 @@ main .juegos h2 {
   font-size: 30px;
 }
 main .juegos div .card {
+  width: 12rem;
   background: none;
   border: none;
 }
@@ -238,22 +263,38 @@ main .juegos div .card .card-body p {
   color: #999999;
   font-size: 14px;
 }
-main .juegos div .card .card-body .btn {
+main .juegos div .card .card-body .btn-add {
   font-size: 0.9em;
   font-weight: 500;
-  color: #ffffff;
+  color: white;
   width: 140px;
   height: 40px;
+  border: none;
+  border-radius: 3px;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(-35.71%, #cecece), color-stop(128.57%, rgba(255, 255, 255, 0.404)));
   background: linear-gradient(180deg, #cecece -35.71%, rgba(255, 255, 255, 0.404) 128.57%);
+  width: 100px;
+}
+main .juegos div .card .card-body .btn-add:hover {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #999999;
+}
+main .miModal {
+  top: 14vh;
+  height: 80vh;
   width: auto;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.884);
+  border: 1px solid #999999;
+  border-radius: 12px;
+  overflow: auto;
 }
-main .modal .modal-dialog {
-  background-color: black;
+main .miModal::-webkit-scrollbar {
+  display: none;
 }
-main .modal .modal-dialog .modal-content {
-  border: 1px solid white;
-  background-color: black;
+main .miModal .headerModal {
+  border-bottom: 1px solid #999999;
 }
 
 @media (min-width: 576px) {

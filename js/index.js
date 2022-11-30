@@ -1,14 +1,28 @@
+const carritoIcon = document.getElementById("carritoIcon"); //selected carrito
+const miModal = document.querySelector(".miModal");
+const btnCloseModal = document.querySelector(".btnCloseModal");
 let ubicacionPrincipal = window.pageYOffset; //ocultarHeader
-let items = document.querySelectorAll("ol li a"); //borderSelected submenu
-let carrito = document.getElementById("carrito"); //selected carrito
-let contador = 0; //selected carrito
-const contenedorJuegos = document.querySelector(".contenedor-juegos"); // RECORRER JUEGOS
-const contenedorCarousel = document.querySelector(".carousel-inner"); // RECORRER CAROUSEL
-const verMas = document.getElementById("verMas"); //btnVer más
-const IVA = 1.21;
+const items = document.querySelectorAll(".bread"); //borderSelected submenu
+const contenedorJuegos = document.querySelector(".contenedor-juegos"); // Juegos Store
+const contenedorCarousel = document.querySelector(".carousel-inner"); // Carrousel principal
+const contenedorCategorias = document.querySelectorAll(".categorias");
+const contenidoSlide = document.querySelector(".contenidoSlide");
+const contenidoSlide2 = document.querySelector(".contenidoSlide2");
+const contenidoSlide3 = document.querySelector(".contenidoSlide3");
+const contenidoSlide4 = document.querySelector(".contenidoSlide4");
+const contenidoSlide5 = document.querySelector(".contenidoSlide5");
+const contenidoSlide6 = document.querySelector(".contenidoSlide6");
+let btnEliminar = document.querySelectorAll(".btnEliminar");
+
+carritoIcon.addEventListener("click", () => {
+  miModal.classList.remove("d-none");
+});
+btnCloseModal.addEventListener("click", () => {
+  miModal.classList.add("d-none");
+});
 
 //ocultarHeader
-window.onscroll = function ocultarHeader() {
+window.onscroll = () => {
   let desplazar = window.pageYOffset;
 
   if (ubicacionPrincipal >= desplazar) {
@@ -22,124 +36,194 @@ window.onscroll = function ocultarHeader() {
 };
 
 //borderSelected submenu
-items.forEach((item) => {
-  item.addEventListener("click", () => {
-    document.querySelector("li .active").classList.remove("active");
-    item.classList.add("active");
+items.forEach((boton) => {
+  boton.addEventListener("click", (e) => {
+    items.forEach((boton) => boton.classList.remove("active"));
+    e.currentTarget.classList.add("active");
   });
-});
-
-//selected carrito
-carrito.addEventListener("click", () => {
-  if (contador == 0) {
-    document.getElementById("carrito").style.color = "#bc0b37";
-    contador = 1;
-  } else {
-    document.getElementById("carrito").style.color = "#ffffff";
-    contador = 0;
-  }
 });
 
 // ----------------------- FUNCTIONS STORE-------------------------------//
 
-// RECORRER CAROUSEL
-function recorrerCarousel(array) {
-  let contenido = "";
+// RECORRER OBJETOS
+const recorrerObjetos = (array, template, contenedor) => {
+  contenedor.innerHTML = "";
   if (array.length > 0) {
-    array.forEach((carousel) => {
-      contenido += retornCarousel(carousel);
+    array.forEach((elemento) => {
+      contenedor.innerHTML += template(elemento);
     });
-    contenedorCarousel.innerHTML = contenido;
   }
-}
-recorrerCarousel(CAROUSEL);
+};
 
-// RECORRER JUEGOS
-function allGamesHTML(array) {
-  let contenido = "";
-  if (array.length > 0) {
-    array.forEach((juego) => {
-      contenido += retornJuego(juego);
-    });
-    contenedorJuegos.innerHTML = contenido;
-  }
-}
-allGamesHTML(JUEGOS);
+recorrerObjetos(CAROUSEL, returnCarousel, contenedorCarousel);
+recorrerObjetos(JUEGOS, returnJuego, contenedorJuegos);
+recorrerObjetos(mostrarPorCategoria("Oferta"), returnJuego, contenidoSlide);
+recorrerObjetos(mostrarPorCategoria("Oferta").splice(5),returnJuego,contenidoSlide2);
+recorrerObjetos(mostrarPorCategoria("Gratuito"), returnJuego, contenidoSlide3);
+recorrerObjetos(mostrarPorCategoria("Gratuito").splice(5),returnJuego,contenidoSlide4);
+recorrerObjetos(mostrarPorCategoria("Popular"), returnJuego, contenidoSlide5);
+recorrerObjetos(
+  mostrarPorCategoria("Popular").splice(5),
+  returnJuego,
+  contenidoSlide6
+);
 
-//PrecioPublico (sin iva)
+function mostrarPorCategoria(categoria) {
+  let juegosCategoria = categoria;
+  let encontrado = JUEGOS.filter(
+    (juego) => juego.categoria === juegosCategoria
+  );
+  return encontrado;
+}
+
+//Mostrar PrecioPublico (sin iva)
 function mostrarCalculo(precio, descuento) {
-  const calculo = new ValorJuego(precio, descuento);
+  const calculo = new MetodoJuego(precio, descuento);
   return calculo.precioDescuento();
 }
 
-//FIND
-function buscarJuegos() {
-  let resultado = [];
-
-  let prod = prompt("Ingresa el juego que buscas:");
-  let encontrado = JUEGOS.find((producto) => producto.titulo === prod);
-  if (encontrado !== undefined) {
-    resultado.push(encontrado);
-    return allGamesHTML(resultado);
-  } else {
-    alert("⛔ No se encontro el Juego!");
-  }
-}
-
-//SORT
-function ordenarJuegos() {
-  let orden = prompt("Elige el órden que deseas. (A ó Z)");
-
-  if (orden.toLocaleUpperCase() === "A") {
-    let productosOrdenados = JUEGOS.sort((a, b) => {
-      if (a.titulo > b.titulo) {
-        return 1;
-      } else if (a.titulo < b.titulo) {
-        return -1;
+// Agregar a Carrito
+const btnAdd = document.querySelectorAll(".btn-add");
+const agregarAlCarrito = (array) => {
+  btnAdd.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = array.find((juego) => juego.id === btn.id);
+      const existe = CARRITO.some((juego) => juego.id === btn.id);
+      if (existe) {
+        CARRITO.map((juego) => {
+          if (juego.id === btn.id) {
+            juego.cantidad++;
+          }
+        });
+      } else {
+        item.cantidad = 1;
+        CARRITO.push(item);
       }
-      return 0;
+      localStorage.setItem("carritoGames", JSON.stringify(CARRITO));
+      mostrarCarrito();
+      actualizarCantidad();
     });
-    allGamesHTML(productosOrdenados);
-  } else if (orden.toLocaleUpperCase() === "Z") {
-    let productosOrdenados = JUEGOS.sort((a, b) => {
-      if (a.titulo < b.titulo) {
-        return 1;
-      } else if (a.titulo > b.titulo) {
-        return -1;
+  });
+};
+agregarAlCarrito(JUEGOS);
+
+const actualizarCantidad = () => {
+  let cantidad = CARRITO.reduce((acc, juego) => acc + juego.cantidad, 0);
+  carritoIcon.innerText = " " + cantidad;
+};
+
+const mostrarCarrito = () => {
+  const modal = document.querySelector(".modalBody");
+  const carrito = JSON.parse(localStorage.getItem("carritoGames"));
+  let contenido = "";
+  if (carrito.length > 0) {
+    carrito.forEach((juego) => {
+      contenido += contenidoCarrito(juego);
+    });
+    modal.innerHTML = contenido;
+  }
+};
+mostrarCarrito()
+
+let CARRITO;
+const CARRITOLS = JSON.parse(localStorage.getItem("carritoGames"));
+
+if (CARRITOLS) {
+  CARRITO = CARRITOLS;
+  actualizarCantidad();
+  mostrarCarrito();
+} else {
+  CARRITO = [];
+  const modal = document.querySelector(".modalBody");
+  modal.innerText = "Tu carrito está vacío 😒";
+}
+
+function eliminarDelCarrito() {
+  btnEliminar = document.querySelectorAll(".btnEliminar");
+
+  btnEliminar.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = CARRITO.findIndex((juego) => juego.id === btn.id);
+
+      if (index > -1) {
+        CARRITO.splice(index, 1);
+        localStorage.setItem("carritoGames", JSON.stringify(CARRITO));
+        actualizarCantidad();
+        mostrarCarrito();
       }
-      return 0;
     });
-    allGamesHTML(productosOrdenados);
-  } else {
-    alert("⛔ Ingresa un tipo de ordenamiento válido: A ó Z");
-  }
+  });
 }
+eliminarDelCarrito();
 
-//FILTER
-function filtrarJuegos() {
-  let nombreJuego = prompt("Ingresa parte del nombre:");
-  let encontrados = JUEGOS.filter(
-    (juego) =>
-      juego.titulo.toLowerCase().includes(nombreJuego) ||
-      juego.titulo.toUpperCase().includes(nombreJuego)
-  );
+// //FIND
+// function buscarJuegos() {
+//   let resultado = [];
 
-  if (encontrados.length > 0) {
-    return allGamesHTML(encontrados);
-  } else {
-    alert("⛔No se encontraron juegos coincidentes.");
-  }
-}
+//   let prod = prompt("Ingresa el juego que buscas:");
+//   let encontrado = JUEGOS.find((producto) => producto.titulo === prod);
+//   if (encontrado !== undefined) {
+//     resultado.push(encontrado);
+//     return allGamesHTML(resultado);
+//   } else {
+//     alert("⛔ No se encontro el Juego!");
+//   }
+// }
 
-//FIND & SPLICE
-function quitarJuegos() {
-  let nombreJuego = prompt("Ingresa el Juego que quieres quitar:");
-  let index = JUEGOS.findIndex((juego) => juego.titulo === nombreJuego);
+// //SORT
+// function ordenarJuegos() {
+//   let orden = prompt("Elige el órden que deseas. (A ó Z)");
 
-  if (index > -1) {
-    JUEGOS.splice(index, 1);
-    return allGamesHTML(JUEGOS);
-  } else {
-    alert("⛔No se encontraron juegos coincidentes.");
-  }
-}
+//   if (orden.toLocaleUpperCase() === "A") {
+//     let productosOrdenados = JUEGOS.sort((a, b) => {
+//       if (a.titulo > b.titulo) {
+//         return 1;
+//       } else if (a.titulo < b.titulo) {
+//         return -1;
+//       }
+//       return 0;
+//     });
+//     allGamesHTML(productosOrdenados);
+//   } else if (orden.toLocaleUpperCase() === "Z") {
+//     let productosOrdenados = JUEGOS.sort((a, b) => {
+//       if (a.titulo < b.titulo) {
+//         return 1;
+//       } else if (a.titulo > b.titulo) {
+//         return -1;
+//       }
+//       return 0;
+//     });
+//     allGamesHTML(productosOrdenados);
+//   } else {
+//     alert("⛔ Ingresa un tipo de ordenamiento válido: A ó Z");
+//   }
+// }
+
+// //FILTER
+// function filtrarJuegos() {
+//   let nombreJuego = prompt("Ingresa parte del nombre:");
+//   let encontrados = JUEGOS.filter(
+//     (juego) =>
+//       juego.titulo.toLowerCase().includes(nombreJuego) ||
+//       juego.titulo.toUpperCase().includes(nombreJuego)
+//   );
+
+//   if (encontrados.length > 0) {
+//     return allGamesHTML(encontrados);
+//   } else {
+//     alert("⛔No se encontraron juegos coincidentes.");
+//   }
+// }
+
+// //FIND & SPLICE
+// function quitarJuegos() {
+//   let nombreJuego = prompt("Ingresa el Juego que quieres quitar:");
+//   let index = JUEGOS.findIndex((juego) => juego.titulo === nombreJuego);
+
+//   if (index > -1) {
+//     JUEGOS.splice(index, 1);
+//     return allGamesHTML(JUEGOS);
+//   } else {
+//     alert("⛔No se encontraron juegos coincidentes.");
+//   }
+// }
