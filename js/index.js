@@ -82,6 +82,9 @@ function mostrarCalculo(precio, descuento) {
   return calculo.precioDescuento();
 }
 
+let CARRITO;
+const CARRITOLS = JSON.parse(localStorage.getItem("carritoGames"));
+
 // Agregar a Carrito
 const btnAdd = document.querySelectorAll(".btn-add");
 const agregarAlCarrito = (array) => {
@@ -125,8 +128,6 @@ const mostrarCarrito = () => {
 };
 mostrarCarrito()
 
-let CARRITO;
-const CARRITOLS = JSON.parse(localStorage.getItem("carritoGames"));
 
 if (CARRITOLS) {
   CARRITO = CARRITOLS;
