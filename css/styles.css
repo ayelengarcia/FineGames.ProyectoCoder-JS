@@ -195,7 +195,7 @@ header .subnav a:hover {
 }
 
 main {
-  background-image: url(../ASSETS/fondomain.webp);
+  background-image: url(../ASSETS/fondoMain.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

@@ -82,9 +82,6 @@ function mostrarCalculo(precio, descuento) {
   return calculo.precioDescuento();
 }
 
-let CARRITO;
-const CARRITOLS = JSON.parse(localStorage.getItem("carritoGames"));
-
 // Agregar a Carrito
 const btnAdd = document.querySelectorAll(".btn-add");
 const agregarAlCarrito = (array) => {
@@ -115,6 +112,9 @@ const actualizarCantidad = () => {
   carritoIcon.innerText = " " + cantidad;
 };
 
+let CARRITO;
+const CARRITOLS = JSON.parse(localStorage.getItem("carritoGames"));
+
 const mostrarCarrito = () => {
   const modal = document.querySelector(".modalBody");
   const carrito = JSON.parse(localStorage.getItem("carritoGames"));
@@ -126,15 +126,12 @@ const mostrarCarrito = () => {
     modal.innerHTML = contenido;
   }
 };
-mostrarCarrito()
-
 
 if (CARRITOLS) {
   CARRITO = CARRITOLS;
   actualizarCantidad();
   mostrarCarrito();
-} else {
-  CARRITO = [];
+} else if ((CARRITO = [])) {
   const modal = document.querySelector(".modalBody");
   modal.innerText = "Tu carrito está vacío 😒";
 }
