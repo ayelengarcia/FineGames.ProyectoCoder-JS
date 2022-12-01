@@ -46,9 +46,7 @@ function contenidoCarrito(juego) {
               <p class="m-0">Cantidad: ${juego.cantidad}</p>
             </div>
             <div class="col-1 d-flex align-items-end">
-            <div id="${
-              juego.id
-            }" class="btnEliminar btn btn-danger">Quitar</div>  
+            <div id="${juego.id}" class="btnEliminar btn btn-danger">Quitar</div>  
             </div>
           </div> <hr>`;
 }

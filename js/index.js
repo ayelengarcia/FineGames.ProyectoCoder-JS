@@ -1,5 +1,6 @@
 const carritoIcon = document.getElementById("carritoIcon"); //selected carrito
 const miModal = document.querySelector(".miModal");
+const contenidoModal = document.querySelector(".modalBody");
 const btnCloseModal = document.querySelector(".btnCloseModal");
 let ubicacionPrincipal = window.pageYOffset; //ocultarHeader
 const items = document.querySelectorAll(".bread"); //borderSelected submenu
@@ -82,6 +83,10 @@ function mostrarCalculo(precio, descuento) {
   return calculo.precioDescuento();
 }
 
+//local Storage
+let CARRITO;
+const CARRITOLS = JSON.parse(localStorage.getItem("carritoGames"));
+
 // Agregar a Carrito
 const btnAdd = document.querySelectorAll(".btn-add");
 const agregarAlCarrito = (array) => {
@@ -99,7 +104,7 @@ const agregarAlCarrito = (array) => {
         item.cantidad = 1;
         CARRITO.push(item);
       }
-      localStorage.setItem("carritoGames", JSON.stringify(CARRITO));
+      guardarStorage();
       mostrarCarrito();
       actualizarCantidad();
     });
@@ -112,29 +117,30 @@ const actualizarCantidad = () => {
   carritoIcon.innerText = " " + cantidad;
 };
 
-let CARRITO;
-const CARRITOLS = JSON.parse(localStorage.getItem("carritoGames"));
-
 const mostrarCarrito = () => {
-  const modal = document.querySelector(".modalBody");
-  const carrito = JSON.parse(localStorage.getItem("carritoGames"));
-  let contenido = "";
-  if (carrito.length > 0) {
-    carrito.forEach((juego) => {
+  CARRITO = JSON.parse(localStorage.getItem("carritoGames"));
+  if (contenidoModal) {
+    let contenido = "";
+    CARRITO.forEach((juego) => {
       contenido += contenidoCarrito(juego);
     });
-    modal.innerHTML = contenido;
+    contenidoModal.innerHTML = contenido;
+  }if (CARRITO.length === 0) {
+    contenidoModal.innerText = "Tu carrito está vacío 😒";
   }
+  guardarStorage();
+  eliminarDelCarrito();
 };
 
-if (CARRITOLS) {
-  CARRITO = CARRITOLS;
-  actualizarCantidad();
-  mostrarCarrito();
-} else if ((CARRITO = [])) {
-  const modal = document.querySelector(".modalBody");
-  modal.innerText = "Tu carrito está vacío 😒";
+function guardarStorage() {
+  localStorage.setItem("carritoGames", JSON.stringify(CARRITO));
 }
+
+if (CARRITOLS) {
+CARRITO = CARRITOLS;
+actualizarCantidad();
+mostrarCarrito();
+} 
 
 function eliminarDelCarrito() {
   btnEliminar = document.querySelectorAll(".btnEliminar");
@@ -145,10 +151,10 @@ function eliminarDelCarrito() {
 
       if (index > -1) {
         CARRITO.splice(index, 1);
-        localStorage.setItem("carritoGames", JSON.stringify(CARRITO));
-        actualizarCantidad();
-        mostrarCarrito();
       }
+      guardarStorage();
+      actualizarCantidad();
+      mostrarCarrito();
     });
   });
 }
