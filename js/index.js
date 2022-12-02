@@ -1,26 +1,21 @@
-const carritoIcon = document.getElementById("carritoIcon"); //selected carrito
-const miModal = document.querySelector(".miModal");
-const contenidoModal = document.querySelector(".modalBody");
-const btnCloseModal = document.querySelector(".btnCloseModal");
 let ubicacionPrincipal = window.pageYOffset; //ocultarHeader
-const items = document.querySelectorAll(".bread"); //borderSelected submenu
+const items = document.querySelectorAll(".bread"); //submenu
+
+const carritoIcon = document.getElementById("carritoIcon"); //btn-abrir
+const btnCloseModal = document.querySelector(".btnCloseModal"); //btn-cerrar
+const miModal = document.querySelector(".miModal"); //modal
+const contenidoModal = document.querySelector(".modalBody"); //contenido
+let btnEliminar = document.querySelectorAll(".btnEliminar"); //quitar
+
 const contenedorJuegos = document.querySelector(".contenedor-juegos"); // Juegos Store
 const contenedorCarousel = document.querySelector(".carousel-inner"); // Carrousel principal
-const contenedorCategorias = document.querySelectorAll(".categorias");
+
 const contenidoSlide = document.querySelector(".contenidoSlide");
 const contenidoSlide2 = document.querySelector(".contenidoSlide2");
 const contenidoSlide3 = document.querySelector(".contenidoSlide3");
 const contenidoSlide4 = document.querySelector(".contenidoSlide4");
 const contenidoSlide5 = document.querySelector(".contenidoSlide5");
 const contenidoSlide6 = document.querySelector(".contenidoSlide6");
-let btnEliminar = document.querySelectorAll(".btnEliminar");
-
-carritoIcon.addEventListener("click", () => {
-  miModal.classList.remove("d-none");
-});
-btnCloseModal.addEventListener("click", () => {
-  miModal.classList.add("d-none");
-});
 
 //ocultarHeader
 window.onscroll = () => {
@@ -44,7 +39,13 @@ items.forEach((boton) => {
   });
 });
 
-// ----------------------- FUNCTIONS STORE-------------------------------//
+//abrir-cerrar modal
+carritoIcon.addEventListener("click", () => {
+  miModal.classList.remove("d-none");
+});
+btnCloseModal.addEventListener("click", () => {
+  miModal.classList.add("d-none");
+});
 
 // RECORRER OBJETOS
 const recorrerObjetos = (array, template, contenedor) => {
@@ -59,9 +60,17 @@ const recorrerObjetos = (array, template, contenedor) => {
 recorrerObjetos(CAROUSEL, returnCarousel, contenedorCarousel);
 recorrerObjetos(JUEGOS, returnJuego, contenedorJuegos);
 recorrerObjetos(mostrarPorCategoria("Oferta"), returnJuego, contenidoSlide);
-recorrerObjetos(mostrarPorCategoria("Oferta").splice(5),returnJuego,contenidoSlide2);
+recorrerObjetos(
+  mostrarPorCategoria("Oferta").splice(5),
+  returnJuego,
+  contenidoSlide2
+);
 recorrerObjetos(mostrarPorCategoria("Gratuito"), returnJuego, contenidoSlide3);
-recorrerObjetos(mostrarPorCategoria("Gratuito").splice(5),returnJuego,contenidoSlide4);
+recorrerObjetos(
+  mostrarPorCategoria("Gratuito").splice(5),
+  returnJuego,
+  contenidoSlide4
+);
 recorrerObjetos(mostrarPorCategoria("Popular"), returnJuego, contenidoSlide5);
 recorrerObjetos(
   mostrarPorCategoria("Popular").splice(5),
@@ -83,9 +92,18 @@ function mostrarCalculo(precio, descuento) {
   return calculo.precioDescuento();
 }
 
+const actualizarCantidad = () => {
+  let cantidad = CARRITO.reduce((acc, juego) => acc + juego.cantidad, 0);
+  carritoIcon.innerText = " " + cantidad;
+};
+
 //local Storage
 let CARRITO;
 const CARRITOLS = JSON.parse(localStorage.getItem("carritoGames"));
+
+function guardarStorage() {
+  localStorage.setItem("carritoGames", JSON.stringify(CARRITO));
+}
 
 // Agregar a Carrito
 const btnAdd = document.querySelectorAll(".btn-add");
@@ -103,6 +121,7 @@ const agregarAlCarrito = (array) => {
       } else {
         item.cantidad = 1;
         CARRITO.push(item);
+        console.table(CARRITO);
       }
       guardarStorage();
       mostrarCarrito();
@@ -112,11 +131,6 @@ const agregarAlCarrito = (array) => {
 };
 agregarAlCarrito(JUEGOS);
 
-const actualizarCantidad = () => {
-  let cantidad = CARRITO.reduce((acc, juego) => acc + juego.cantidad, 0);
-  carritoIcon.innerText = " " + cantidad;
-};
-
 const mostrarCarrito = () => {
   CARRITO = JSON.parse(localStorage.getItem("carritoGames"));
   if (contenidoModal) {
@@ -125,22 +139,21 @@ const mostrarCarrito = () => {
       contenido += contenidoCarrito(juego);
     });
     contenidoModal.innerHTML = contenido;
-  }if (CARRITO.length === 0) {
+  }
+  if (CARRITO.length === 0) {
     contenidoModal.innerText = "Tu carrito está vacío 😒";
   }
   guardarStorage();
   eliminarDelCarrito();
 };
 
-function guardarStorage() {
-  localStorage.setItem("carritoGames", JSON.stringify(CARRITO));
-}
-
 if (CARRITOLS) {
-CARRITO = CARRITOLS;
-actualizarCantidad();
-mostrarCarrito();
-} 
+  CARRITO = CARRITOLS;
+  actualizarCantidad();
+  mostrarCarrito();
+} else {
+  CARRITO = [];
+}
 
 function eliminarDelCarrito() {
   btnEliminar = document.querySelectorAll(".btnEliminar");
@@ -158,7 +171,6 @@ function eliminarDelCarrito() {
     });
   });
 }
-eliminarDelCarrito();
 
 // //FIND
 // function buscarJuegos() {
