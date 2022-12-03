@@ -24,7 +24,6 @@
     integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
   </script>
   <!-- SCRIPTS -->
-  <script src="./js/juegos.js"></script>
   <script src="./js/templates.js"></script>
   <script defer src="./js/index.js"></script>
 </head>
@@ -249,13 +248,16 @@
       </div>
     </div>
 
-    <!-- CARRITO -->
+   <!-- CARRITO -->
     <div class="miModal d-none d-flex flex-column justify-content-between position-fixed">
       <h5 class="headerModal px-5 py-3">Mi Carrito</h5>
       <div class="modalBody px-5 py-2"> </div>
-      <div class="d-flex justify-content-end pb-3 pt-0 pe-5">
-        <button class="btnCloseModal btn btn-secondary mx-2">Cerrar</button>
-        <button class="btn btn-danger">Comprar</button>
+      <div class="d-flex justify-content-start mx-5">
+        <div class="col-6 d-flex pb-3 pt-0">
+          <button class="btnCloseModal btn btn-secondary mx-2">Cerrar</button>
+          <button class="btn btn-danger">Comprar</button>
+        </div>
+        <div class="col-6 pt-2 ps-4 d-flex justify-content-end totalSinIva"></div>
       </div>
     </div>
   </main>

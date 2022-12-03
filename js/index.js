@@ -17,6 +17,29 @@ const contenidoSlide4 = document.querySelector(".contenidoSlide4");
 const contenidoSlide5 = document.querySelector(".contenidoSlide5");
 const contenidoSlide6 = document.querySelector(".contenidoSlide6");
 
+const URLcarousel = "bbdd/carousel.json";
+const URLjuegos = "bbdd/juegos.json";
+const CAROUSEL = [];
+const JUEGOS = [];
+
+fetch(URLcarousel)
+  .then((response) => (data = response.json()))
+  .then((data) => CAROUSEL.push(...data))
+  .then(() => recorrerObjetos(CAROUSEL, returnCarousel, contenedorCarousel));
+
+fetch(URLjuegos)
+  .then((response) => (data = response.json()))
+  .then((data) => JUEGOS.push(...data))
+  .then(() => recorrerObjetos(JUEGOS, returnJuego, contenedorJuegos))
+  .then(() => recorrerObjetos(mostrarPorCategoria("Oferta"), returnJuego, contenidoSlide))
+  .then(() => recorrerObjetos(mostrarPorCategoria("Oferta").splice(5), returnJuego, contenidoSlide2))
+  .then(() => recorrerObjetos(mostrarPorCategoria("Gratuito"), returnJuego, contenidoSlide3))
+  .then(() => recorrerObjetos(mostrarPorCategoria("Gratuito").splice(5), returnJuego, contenidoSlide4))
+  .then(() => recorrerObjetos(mostrarPorCategoria("Popular"), returnJuego, contenidoSlide5))
+  .then(() => recorrerObjetos(mostrarPorCategoria("Popular").splice(5), returnJuego, contenidoSlide6))
+  .then(() => agregarAlCarrito(JUEGOS));
+
+
 //ocultarHeader
 window.onscroll = () => {
   let desplazar = window.pageYOffset;
@@ -57,32 +80,9 @@ const recorrerObjetos = (array, template, contenedor) => {
   }
 };
 
-recorrerObjetos(CAROUSEL, returnCarousel, contenedorCarousel);
-recorrerObjetos(JUEGOS, returnJuego, contenedorJuegos);
-recorrerObjetos(mostrarPorCategoria("Oferta"), returnJuego, contenidoSlide);
-recorrerObjetos(
-  mostrarPorCategoria("Oferta").splice(5),
-  returnJuego,
-  contenidoSlide2
-);
-recorrerObjetos(mostrarPorCategoria("Gratuito"), returnJuego, contenidoSlide3);
-recorrerObjetos(
-  mostrarPorCategoria("Gratuito").splice(5),
-  returnJuego,
-  contenidoSlide4
-);
-recorrerObjetos(mostrarPorCategoria("Popular"), returnJuego, contenidoSlide5);
-recorrerObjetos(
-  mostrarPorCategoria("Popular").splice(5),
-  returnJuego,
-  contenidoSlide6
-);
-
 function mostrarPorCategoria(categoria) {
   let juegosCategoria = categoria;
-  let encontrado = JUEGOS.filter(
-    (juego) => juego.categoria === juegosCategoria
-  );
+  let encontrado = JUEGOS.filter((juego) => juego.categoria === juegosCategoria);
   return encontrado;
 }
 
@@ -106,8 +106,8 @@ function guardarStorage() {
 }
 
 // Agregar a Carrito
-const btnAdd = document.querySelectorAll(".btn-add");
 const agregarAlCarrito = (array) => {
+  const btnAdd = document.querySelectorAll(".btn-add");
   btnAdd.forEach((btn) => {
     btn.addEventListener("click", () => {
       const item = array.find((juego) => juego.id === btn.id);
@@ -121,7 +121,6 @@ const agregarAlCarrito = (array) => {
       } else {
         item.cantidad = 1;
         CARRITO.push(item);
-        console.table(CARRITO);
       }
       guardarStorage();
       mostrarCarrito();
@@ -129,7 +128,7 @@ const agregarAlCarrito = (array) => {
     });
   });
 };
-agregarAlCarrito(JUEGOS);
+// agregarAlCarrito(JUEGOS);
 
 const mostrarCarrito = () => {
   CARRITO = JSON.parse(localStorage.getItem("carritoGames"));
@@ -141,10 +140,11 @@ const mostrarCarrito = () => {
     contenidoModal.innerHTML = contenido;
   }
   if (CARRITO.length === 0) {
-    contenidoModal.innerText = "Tu carrito está vacío 😒";
+    contenidoModal.innerHTML = `<div class="ms-5 ps-4">Tu carrito está vacío 😒</div>`;
   }
   guardarStorage();
   eliminarDelCarrito();
+  mostrarTotalSinIVA();
 };
 
 if (CARRITOLS) {
@@ -161,15 +161,29 @@ function eliminarDelCarrito() {
   btnEliminar.forEach((btn) => {
     btn.addEventListener("click", () => {
       const index = CARRITO.findIndex((juego) => juego.id === btn.id);
+      const existe = CARRITO.some((juego) => juego.id === btn.id);
 
-      if (index > -1) {
-        CARRITO.splice(index, 1);
+      if (existe) {
+        CARRITO.map((juego) => {
+          if (juego.id === btn.id && juego.cantidad > 0) {
+            juego.cantidad--;
+          } else if (juego.cantidad < 1) {
+            index.cantidad = 1;
+            CARRITO.splice(index, 1);
+          }
+        });
       }
       guardarStorage();
       actualizarCantidad();
       mostrarCarrito();
     });
   });
+}
+
+function mostrarTotalSinIVA() {
+  const total = CARRITO.reduce((acc, el) => acc + mostrarCalculo(el.precio, el.descuento) * el.cantidad, 0);
+  const totalSinIva = document.querySelector(".totalSinIva");
+  totalSinIva.innerText = "Total : US$ " + (total.toFixed(2));
 }
 
 // //FIND
