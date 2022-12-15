@@ -1,5 +1,9 @@
 @mixin body {
   body {
+    background-image: url(../ASSETS/fondomain.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     font-family: "Nunito", sans-serif;
     background-color: black;
     color: white;
@@ -79,7 +83,7 @@
   border: none;
   border-radius: 3px;
   background: map-get($color, "gradient-glass");
-  &:hover{
+  &:hover {
     transition: 0.5s;
     background-color: map-get($color, "gray");
   }
@@ -88,7 +92,7 @@
 @mixin desplegable-login {
   .desplegable-login {
     display: none;
-    width: 120px;
+    width: 135px;
     height: auto;
     right: -2px;
     top: 20px;
@@ -111,7 +115,7 @@
 
 @mixin search-input {
   text-indent: 18px;
-  width: 120px;
+  width: 140px;
   height: 30px;
   border: none;
   box-shadow: none;
@@ -120,10 +124,101 @@
   &:hover,
   &:focus {
     transition: 2s;
-    width: 165px;
+    width: 180px;
     max-width: 200px;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.404);
     background-color: map-get($color, "gradient-gray");
+  }
+}
+
+@mixin retornError{
+  .retorn-error {
+      border-radius: 5px;
+      border: 1px solid map-get($color, "primary");
+      background-color: black;
+      color:map-get($color, "primary");
+      font-weight: 700;
+    }
+}
+
+@mixin pantallaCompra {
+  .pantalla-compra {
+    background-color: black;
+    position: fixed;
+    height: 100vh;
+    overflow: auto;
+    z-index: 100;
+    top: 0;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .titulo-compra {
+      margin-top: 14vh;
+      border-bottom: 1px solid map-get($color, "gray");
+      h1 {
+        font-size: 2rem;
+      }
+      .btnX {
+        @include enlaces;
+      }
+    }
+    .tabla-compra {
+      background-color: map-get($color, "gradient-gray");
+      font-size: 0.8rem;
+      .img-loading {
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+        width: 80px;
+      }
+    }
+    .tarjeta {
+      z-index: 100;
+      position: relative;
+      top: 40px;
+      .delantera,
+      .trasera {
+        background-image: url(../ASSETS/fontoTarjeta.webp);
+        background-size: cover;
+        width: 420px;
+        height: 250px;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 10px;
+        box-shadow: map-get($color, "sombra");
+        cursor: pointer;
+      }
+
+      
+    }
+    .expand-form,
+    .ocultar-form {
+      z-index: 101;
+      position: relative;
+      .bi {
+        border-radius: 50px;
+        box-shadow: map-get($color, "sombra");
+      }
+    }
+    .forma-pago {
+      background: map-get($color, "gradient-form");
+      border-radius: 3px;
+      margin-top: -60px;
+      margin-bottom: 50px;
+      padding-top: 70px;
+      padding-bottom: 25px;
+      height: auto;
+      .formCard {
+        input,
+        select {
+          background: map-get($color, "gradient-glass");
+          border: none;
+          height: 30px;
+        }
+        .succes {
+          border: 2px solid rgb(55, 166, 55);
+        }
+      }
+    }
   }
 }

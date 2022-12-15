@@ -1,6 +1,7 @@
 @import "./variables";
 @import "./mixins";
 @include body;
+@include pantallaCompra;
 @import "./header";
 @import "./main";
 @import "./footer";

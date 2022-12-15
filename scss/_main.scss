@@ -1,9 +1,5 @@
 main {
-  background-image: url(../ASSETS/fondomain.webp);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
+  @include retornError;
   .gif {
     img {
       max-width: 100%;
@@ -54,7 +50,7 @@ main {
     }
     div {
       .card {
-        width: 12rem;
+        width: 11.5rem;
         background: none;
         border: none;
         .card-body {
@@ -69,9 +65,10 @@ main {
         }
       }
     }
+    @include retornError;
   }
   .miModal {
-    top: 14vh;
+    top: 16vh;
     height: 80vh;
     width: auto;
     z-index: 100;
@@ -84,6 +81,15 @@ main {
     }
     .headerModal {
       border-bottom: 1px solid map-get($color, "gray");
+    }
+    .modalBody {
+      .vacio {
+        font-size: 1.2em;
+      }
+    }
+    div > div > .btnComprarModal > a {
+      text-decoration: none;
+      color: white;
     }
   }
 }

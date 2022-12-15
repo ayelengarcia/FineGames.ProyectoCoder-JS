@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> Fine Games Store 𝄀 Descarga y disfruta los mejores juegos para PC y Consolas</title>
+  <title> Fine Games Store 𝄀 Descarga y disfruta los mejores juegos para PC y Consolas </title>
   <link rel="shortcut icon" href="./assets/Favicon.webp" />
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,8 +25,9 @@
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="./js/templates.js"></script>
-  <script defer src="./js/index.js"></script>
+  <script defer src="./js/store.js"></script>
   <script defer src="./js/dom.js"></script>
+
 </head>
 
 <body>
@@ -36,6 +37,11 @@
       <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="#"><img class="logo" src="./assets/Fine-gameswhite.webp" alt="Logo" /></a>
+        <!-- Buscador -->
+        <div class="search ms-2">
+          <input id="inputSearch" class="form-control me-2" type="search" placeholder="Search..." />
+          <i class="bi bi-search position-absolute"></i>
+        </div>
         <!-- Btn-nav -->
         <button class="btn-nav navbar-toggler" type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -46,10 +52,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="nav nav-pills ms-lg-auto my-1">
             <li class="nav-item ms-auto">
-              <a class="nav-link active" href="./index.html">INICIO</a>
+              <a class="nav-link" href="./index.html">INICIO</a>
             </li>
             <li class="nav-item me-auto">
-              <a class="nav-link d-flex justify-content-center" href="./store.html">TIENDA</a>
+              <a class="nav-link d-flex justify-content-center active" href="./store.html">TIENDA</a>
             </li>
           </ul>
           <!-- Btn login1 -->
@@ -65,24 +71,16 @@
               <path
                 d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
             </svg>
-            <div class="desplegable-login position-absolute p-0 mt-4"></div>
+            <div class="desplegable-login position-absolute p-0 mt-4">
+            </div>
           </div>
         </div>
       </div>
     </nav>
     <!-- SUBNAV -->
-    <nav class="row container-fluid py-1 ms-0 px-1 px-sm-3 subnav">
-      <!-- submenu -->
-      <ol class="col-9 col-md-10 breadcrumb d-flex align-items-center m-0">
-        <li class="breadcrumb-item">
-          <a class="bread active" href="./index.html">Descubrir</a>
-        </li>
-        <li class="breadcrumb-item">
-          <a class="bread" href="./index.html#carouselExampleControls">Explorar</a>
-        </li>
-      </ol>
+    <nav class="row container-fluid justify-content-end py-1 m-0 subnav">
       <!-- Carrito -->
-      <button id="carritoIcon" class="col-1 col-lg-2 d-flex justify-content-end"></button>
+      <button id="carritoIcon" class="col-2 col-lg-12 d-flex justify-content-end align-items-end p-0"></button>
       <!-- btn-login-2 -->
       <div class="col-2 col-md-1 btn-user d-lg-none d-flex align-items-center justify-content-center p-0">
         <div class="btn-login d-flex justify-content-center align-items-center ms-2 me-1">
@@ -96,117 +94,21 @@
           <path
             d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
         </svg>
-        <div class="desplegable-login log-xs position-absolute p-0 pt-1 mt-4"></div>
+        <div class="desplegable-login log-xs position-absolute p-0 pt-1 mt-4">
+        </div>
       </div>
     </nav>
   </header>
 
   <main class="d-flex justify-content-center">
-    <!-- HOME -->
+
+    <!-- STORE -->
     <div class="row container-fluid mt-5 mx-0 py-5 px-1 px-md-5">
-      <!-- Descubrir -->
-      <div class="descubrir row container-fluid m-0 p-0">
-        <!-- gif -->
-        <img class="col-lg-4 gif d-none d-lg-flex justify-content-center align-items-center p-2 py-5 my-4"
-          src="assets/glitch.webp" alt="Personaje Focus" />
+      <div class="col-12 juegos p-5 pt-4 my-4">
+        <h1 class="col-12 pb-4">Buscar...</h1>
 
-        <!-- carousel -->
-        <div id="carouselExampleCaptions" class="col-lg-8 carousel slide m-0 p-0" data-bs-ride="carousel">
-          <div class="carousel-inner"></div>
-
-          <div class="carousel-indicators m-0">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-              aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-              aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-              aria-label="Slide 3"></button>
-          </div>
+        <div id="todos" class="contenedor-juegos container-fluid row flex-wrap justify-content-around gap-3 m-0 p-0">
         </div>
-      </div>
-
-      <!-- Explorar -->
-      <div class="explorar">
-        <div id="carouselExampleControls" class="carousel col-12 juegos slide p-5 pt-4 my-4" data-bs-ride="carousel">
-        <h1 class="col-12 pb-4">Juegos en oferta</h1>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="d-block w-100">
-              <div class="contenidoSlide d-flex gap-5"></div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-block w-100">
-              <div class="contenidoSlide2 d-flex gap-5"></div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-
-      <div id="carouselExampleControls-2" class="carousel col-12 juegos slide p-5 pt-4 my-4" data-bs-ride="carousel">
-        <h1 class="col-12 pb-4">Juegos en Gratuitos</h1>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="d-block w-100">
-              <div class="contenidoSlide3 d-flex gap-5"></div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-block w-100">
-              <div class="contenidoSlide4 d-flex gap-5"></div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls-2"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls-2"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
-
-      <div id="carouselExampleControls-3" class="carousel col-12 juegos slide p-5 pt-4 my-4" data-bs-ride="carousel">
-        <h1 class="col-12 pb-4">Juegos Populares</h1>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="d-block w-100">
-              <div class="contenidoSlide5 d-flex gap-5"></div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="d-block w-100">
-              <div class="contenidoSlide6 d-flex gap-5"></div>
-            </div>
-          </div>
-
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls-3"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls-3"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
       </div>
     </div>
 
@@ -312,7 +214,5 @@
 
   </div>
 
-
 </body>
-
 </html>

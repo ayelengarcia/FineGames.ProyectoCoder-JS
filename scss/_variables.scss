@@ -8,4 +8,12 @@ $color: (
     linear-gradient(180deg, #cecece -35.71%, rgba(255, 255, 255, 0.404) 128.57%),
   "gradient-texto":
     linear-gradient(3.05deg, #000000 -17.92%, rgba(169, 145, 214, 0) 81.23%),
+  "sombra": -8px 10px 6px -2px rgba(0, 0, 0, 0.75),
+  "gradient-form":
+    linear-gradient(
+      to right,
+      rgba(255, 142, 3, 0.552),
+      rgba(255, 0, 0, 0.552),
+      rgba(108, 13, 13, 0.546)
+    ),
 );

@@ -1,5 +1,10 @@
 body {
   @media (min-width: 576px) {
+    .pantalla-compra {
+        .tabla-compra {
+          font-size: 1rem;
+        }
+      }
     header {
       .navbar {
         .search {

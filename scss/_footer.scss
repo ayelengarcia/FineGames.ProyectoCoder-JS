@@ -1,0 +1,16 @@
+footer {
+  background-color: map-get($color, "gradient-black");
+  height: auto;
+  .redes{
+    font-size: 2rem;
+    i{
+      @include enlaces
+    }
+  }
+  .legal {
+    li{
+      @include enlaces
+    }
+    
+  }
+}
