@@ -132,14 +132,14 @@
   }
 }
 
-@mixin retornError{
+@mixin retornError {
   .retorn-error {
-      border-radius: 5px;
-      border: 1px solid map-get($color, "primary");
-      background-color: black;
-      color:map-get($color, "primary");
-      font-weight: 700;
-    }
+    border-radius: 5px;
+    border: 1px solid map-get($color, "primary");
+    background-color: black;
+    color: map-get($color, "primary");
+    font-weight: 700;
+  }
 }
 
 @mixin pantallaCompra {
@@ -178,6 +178,7 @@
       top: 40px;
       .delantera,
       .trasera {
+        border: 1px solid rgba(128, 128, 128, 0.411);
         background-image: url(../ASSETS/fontoTarjeta.webp);
         background-size: cover;
         width: 420px;
@@ -188,8 +189,6 @@
         box-shadow: map-get($color, "sombra");
         cursor: pointer;
       }
-
-      
     }
     .expand-form,
     .ocultar-form {

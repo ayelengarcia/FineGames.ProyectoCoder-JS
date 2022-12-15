@@ -53,6 +53,7 @@ body {
 }
 .pantalla-compra .tarjeta .delantera,
 .pantalla-compra .tarjeta .trasera {
+  border: 1px solid rgba(128, 128, 128, 0.411);
   background-image: url(../ASSETS/fontoTarjeta.webp);
   background-size: cover;
   width: 420px;
