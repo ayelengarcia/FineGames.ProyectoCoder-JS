@@ -1,7 +1,5 @@
 body {
-  background: url(../ASSETS/fondomain.webp);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(198deg, rgb(0, 0, 0) 54%, rgb(131, 1, 1) 100%);
   background-attachment: fixed;
   font-family: "Nunito", sans-serif;
   background-color: black;
@@ -53,9 +51,9 @@ body {
 }
 .pantalla-compra .tarjeta .delantera,
 .pantalla-compra .tarjeta .trasera {
-  border: 1px solid rgba(128, 128, 128, 0.411);
-  background: url(../ASSETS/fontoTarjeta.webp);
-  background-size: cover;
+  border: 1px solid rgba(66, 59, 59, 0.719);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(39%, rgb(0, 0, 0)), to(rgb(131, 1, 1)));
+  background: linear-gradient(0deg, rgb(0, 0, 0) 39%, rgb(131, 1, 1) 100%);
   width: 420px;
   height: 250px;
   max-width: 100%;

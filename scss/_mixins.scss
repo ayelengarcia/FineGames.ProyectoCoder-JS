@@ -1,8 +1,6 @@
 @mixin body {
   body {
-    background: url(../ASSETS/fondomain.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: linear-gradient(198deg, rgba(0,0,0,1) 54%, rgba(131,1,1,1) 100%);
     background-attachment: fixed;
     font-family: "Nunito", sans-serif;
     background-color: black;
@@ -178,9 +176,8 @@
       top: 40px;
       .delantera,
       .trasera {
-        border: 1px solid rgba(128, 128, 128, 0.411);
-        background: url(../ASSETS/fontoTarjeta.webp);
-        background-size: cover;
+        border: 1px solid rgba(66, 59, 59, 0.719);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 39%, rgba(131,1,1,1) 100%);
         width: 420px;
         height: 250px;
         max-width: 100%;
