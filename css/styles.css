@@ -1,5 +1,5 @@
 body {
-  background-image: url(../ASSETS/fondomain.webp);
+  background: url(../ASSETS/fondomain.webp);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -54,7 +54,7 @@ body {
 .pantalla-compra .tarjeta .delantera,
 .pantalla-compra .tarjeta .trasera {
   border: 1px solid rgba(128, 128, 128, 0.411);
-  background-image: url(../ASSETS/fontoTarjeta.webp);
+  background: url(../ASSETS/fontoTarjeta.webp);
   background-size: cover;
   width: 420px;
   height: 250px;
