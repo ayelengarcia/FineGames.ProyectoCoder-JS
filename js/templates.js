@@ -113,13 +113,12 @@ const mostrarCardBack=()=> {
           </div>
         </div>
 
-        <div class="col-4 grupo px-4 pt-2">
+        <div class="col-4 grupo px-4 py-2">
           <p>CCV</p>
-          <p id="ccvCard" class="ps-2" style="background-color:white; color:black; height: 25px;"></p>
+          <p id="ccvCard" class="pt-1 mb-0" style="background-color:white; color:black; height: 25px;"></p>
         </div>
 
-        <p class="leyenda px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem,
-          voluptates illo.</p>
+        <p class="leyenda px-4 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus exercitationem.</p>
         <span class=" px-4">www.tubanco.com </span>`;
 }
 

@@ -5,7 +5,7 @@ const btnPantallaCompra = document.querySelector(".btnX");
 const contenidoCompra = document.querySelector(".contenido-compra");
 const tarjeta = document.querySelector(".tarjeta");
 const formulario = document.querySelector(".forma-pago");
-const btnExpandForm = document.querySelector(".bi-arrow-repeat");
+const btnExpandForm = document.querySelector(".bi-arrow-down");
 const btnOcultarForm = document.querySelector(".bi-x");
 
 const cardFront = document.querySelector(".delantera");
