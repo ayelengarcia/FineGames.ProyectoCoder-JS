@@ -8,7 +8,7 @@
     "titulo": "YA DISPONIBLE",
     "texto": "Cambia el curso del apocalipsis zombi en consolas y en PC con cross-play completo. Únete con amigos o en solitario... ",
     "precio": "Desde US$ 9.99",
-    "link": "./index.html#carouselExampleControls-3",
+    "link": "./index.html#populares",
     "btn": "COMPRAR YA"
   },
   {
@@ -20,7 +20,7 @@
     "titulo": "ACCESO ANTICIPADO",
     "texto": "El acceso anticipado de Sins Of a Solar Empire II comienza con una prueba técnica jugable.",
     "precio": "Desde US$ 8.49",
-    "link": "./index.html#carouselExampleControls",
+    "link": "./index.html#ofertas",
     "btn": "PRECOMPRAR YA"
   },
   {
@@ -32,7 +32,7 @@
     "titulo": "LA VERSIÓN 3.2 YA DISPONIBLE",
     "texto": "La actualización más reciente te traerá la gran final de la misión de Arconte de Sumeru, y prensentará a Nahida y Layla como personajes jugables.",
     "precio": "GRATIS",
-    "link": "./index.html#carouselExampleControls-2",
+    "link": "./index.html#gratuitos",
     "btn": "DESCARGAR"
   }
 ]
