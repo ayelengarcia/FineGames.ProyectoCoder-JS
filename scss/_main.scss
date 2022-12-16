@@ -7,8 +7,23 @@ main {
   }
 
   .carousel {
+    max-width: 120em;
+    transition: all 0.4s ease;
+    overflow: hidden;
     border-radius: 5px;
     font-size: 0.8em;
+
+    .btn-carousel,
+    .btn-carousel2,
+    .btn-carousel3 {
+      list-style: none;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+    .activo {
+      color: rgb(202, 18, 18);
+    }
+
     .carousel-inner {
       .carousel-item {
         .carousel-caption {
@@ -29,15 +44,6 @@ main {
           }
         }
       }
-    }
-  }
-  #carouselExampleControls,
-  #carouselExampleControls-2,
-  #carouselExampleControls-3 {
-    .carousel-control-prev,
-    .carousel-control-next {
-      background-color: map-get($color, "gradient-black");
-      width: 30px;
     }
   }
 
@@ -67,9 +73,10 @@ main {
     }
     @include retornError;
   }
+
   .miModal {
     top: 16vh;
-    height: 80vh;
+    height: 77vh;
     width: auto;
     z-index: 100;
     background: map-get($color, "gradient-black");

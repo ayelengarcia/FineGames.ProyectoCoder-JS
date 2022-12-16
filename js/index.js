@@ -2,12 +2,14 @@ const contenedorCarousel = document.querySelector(".carousel-inner"); // Carrous
 
 const contenedorJuegos = document.querySelector(".explorar");
 
+const btnCarousel = document.querySelectorAll(".btn-carousel");
+const btnCarousel2 = document.querySelectorAll(".btn-carousel2");
+const btnCarousel3 = document.querySelectorAll(".btn-carousel3");
+const btnCarouselOcultar = document.querySelectorAll(".ocultar");
+
 const contenidoSlide = document.querySelector(".contenidoSlide");
 const contenidoSlide2 = document.querySelector(".contenidoSlide2");
 const contenidoSlide3 = document.querySelector(".contenidoSlide3");
-const contenidoSlide4 = document.querySelector(".contenidoSlide4");
-const contenidoSlide5 = document.querySelector(".contenidoSlide5");
-const contenidoSlide6 = document.querySelector(".contenidoSlide6");
 
 const URLcarousel = "bbdd/carousel.json";
 const URLjuegos = "bbdd/juegos.json";
@@ -23,11 +25,11 @@ fetch(URLjuegos)
   .then((response) => (data = response.json()))
   .then((data) => JUEGOS.push(...data))
   .then(() => recorrerObjetos(mostrarPorCategoria("Oferta"), returnJuego, contenidoSlide))
-  .then(() => recorrerObjetos(mostrarPorCategoria("Oferta").splice(5), returnJuego, contenidoSlide2))
-  .then(() => recorrerObjetos(mostrarPorCategoria("Gratuito"), returnJuego, contenidoSlide3))
-  .then(() => recorrerObjetos(mostrarPorCategoria("Gratuito").splice(5), returnJuego, contenidoSlide4))
-  .then(() => recorrerObjetos(mostrarPorCategoria("Popular"), returnJuego, contenidoSlide5))
-  .then(() => recorrerObjetos(mostrarPorCategoria("Popular").splice(5), returnJuego, contenidoSlide6))
+  .then(() => recorrerObjetos(mostrarPorCategoria("Gratuito"), returnJuego, contenidoSlide2))
+  .then(() => recorrerObjetos(mostrarPorCategoria("Popular"), returnJuego, contenidoSlide3))
+  .then(() =>  recorrerBtnsCarrousel(btnCarousel, contenidoSlide))
+  .then(() =>  recorrerBtnsCarrousel(btnCarousel2, contenidoSlide2))
+  .then(() =>  recorrerBtnsCarrousel(btnCarousel3, contenidoSlide3))
   .then(() => agregarAlCarrito(JUEGOS))
   .catch(error => contenedorJuegos.innerHTML = retornError())
 
@@ -38,3 +40,32 @@ function mostrarPorCategoria(categoria) {
   );
   return encontrado;
 }
+
+function recorrerBtnsCarrousel(button, slideCarrousel) {
+  button.forEach((btn, i) => {
+    button[i].addEventListener("click", () => {
+      let posicion = i;
+      let operacion = posicion * -50;
+
+      slideCarrousel.style.transform = `translateX(${operacion}%)`;
+      slideCarrousel.style.transition = "1s";
+
+      button.forEach((btn, i) => {
+        button[i].classList.remove("activo");
+      });
+      button[i].classList.add("activo");
+    });
+  });
+}
+
+window.onresize = function (event) {
+  if (window.innerWidth > 768) {
+    btnCarouselOcultar.forEach((btn, i) => {
+      btnCarouselOcultar[i].classList.add("d-none");
+    });
+  } else {
+    btnCarouselOcultar.forEach((btn, i) => {
+      btnCarouselOcultar[i].classList.remove("d-none");
+    });
+  }
+};
